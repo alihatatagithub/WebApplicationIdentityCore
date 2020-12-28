@@ -1,0 +1,29 @@
+﻿@model IEnumerable<WebApplicationIdentityCoreAuth.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div class="card-deck">
+    @foreach (var item in Model)
+    {
+        var PhotoPath = "~/images/" + (item.PhotoPath ?? "sam.jpg");
+
+        <div class="card m-3" style="min-width:18rem;max-width:30.5%">
+            <div class="card-header">
+                <h3>@item.FirstName    @item.LastName</h3>
+            </div>
+
+            <img src="@PhotoPath" class="card-img-top img-thumbnail" asp-append-version="true" />
+        </div>
+
+
+    }
+</div>
+

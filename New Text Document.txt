@@ -1,0 +1,24 @@
+https://github.com/dotnet/aspnetcore
+
+What is the Different Between Session Cookie , Persistent Cookie ?
+ without remember me checkbox is 	Session Cookie : Login UserName,Password   (destroy When close Browser)
+	Inspect Browser(application)  	ASP.NetCore.Identity.Application (this Cookie is sent with each request to the server )
+
+
+	Session Cookie Destroy When Browser is CLosed 
+	Persistent Cookie Not Destroy when Browser is Closed
+
+------------------lesson 71----------------------------------
+services.AddMvc(op=>
+		{var policies = new AuthorizationPolicyBuilder()
+						.RequireAuthenticatedUser()
+						.Build();
+					op.Filter.Add(new AuthorizeFilter(policies))
+		}
+
+
+------------------------Lesson 52 Upload Image--------------------------------
+
+1-In ViewModel the Type Is IFormFile But In The Model The Type Is string
+
+2-To Show Name Of Image Use JQuery 

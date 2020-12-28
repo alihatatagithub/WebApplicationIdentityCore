@@ -1,0 +1,90 @@
+﻿@model EditRoleViewModel
+@{
+    ViewData["Title"] = "EditRole";
+}
+
+<h1>EditRole</h1>
+
+<form method="post" class="mt-3">
+    <div class="form-group row">
+        <label asp-for="Id" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="Id" disabled class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label asp-for="RoleName" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="RoleName" class="form-control" />
+            <span asp-validation-for="RoleName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a asp-action="ListRoles" class="btn btn-primary">Cancel</a>
+        </div>
+    </div>
+
+
+    <div class="card">
+        <h3 class="card-header">
+            User in this Roles
+        </h3>
+
+        <div class="card-body">
+            @if (Model.Users.Any())
+            {
+                foreach (var user in Model.Users)
+                {
+                    <h5 class="card-title">@user</h5>
+
+                }
+            }
+            else
+            {
+                <h5 class="card-title">None At The Moment</h5>
+            }
+
+
+        </div>
+
+        <div class="card-footer">
+            <a asp-action="EditUserInRole" asp-controller="Admin" asp-route-id="@Model.Id" class="btn btn-primary" style="width:auto">
+                Add or Remove Users
+            </a>
+        </div>
+    </div>
+
+
+
+
+
+</form>
+
+<div class="card">
+    <h3 class="card-header">
+        Claims
+    </h3>
+
+    <div class="card-body">
+  
+            <h5 class="card-title">
+
+            </h5>
+        
+
+
+    </div>
+
+    <div class="card-footer">
+        <a asp-action="ManageUserClaims" asp-controller="Admin" asp-route-userId="@Model.Id" class="btn btn-primary" style="width:auto">
+            Add or Remove Claims
+        </a>
+    </div>
+</div>
